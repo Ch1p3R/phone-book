@@ -1,10 +1,14 @@
 package com.phonebook.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
@@ -37,6 +41,8 @@ public class User {
 	@Length(min = 5, message = "Your password must have at least 5 characters")
 	private String password;
 	
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "user")
+	private List<PBEntry> phoneBook;
 		
 	public User() {
 	}
@@ -72,6 +78,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<PBEntry> getPhoneBook() {
+		return phoneBook;
+	}
+
+	public void setPhoneBook(List<PBEntry> phoneBook) {
+		this.phoneBook = phoneBook;
+	}
 	
-		
+	
 }

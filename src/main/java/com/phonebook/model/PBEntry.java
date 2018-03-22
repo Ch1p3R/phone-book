@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -45,6 +47,9 @@ public class PBEntry {
 	@Pattern(regexp="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")
 	private String email;
 	
+	@ManyToOne()
+    @JoinColumn(name = "user_id")
+	private User user;
 	
 	public PBEntry() {
 	}
@@ -128,8 +133,18 @@ public class PBEntry {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
-	
+		
 	
 	
 	
