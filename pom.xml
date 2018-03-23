@@ -26,6 +26,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -38,6 +43,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -48,6 +54,15 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- For testing through DataJpaTest annotation which support only in-memory
+		waste a lot of time on configuring via embedded database via
+		@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+		which for some reason doesn't work in Spring Boot 2.0 -->
+	 	<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency> 
 
 		<!-- Added for successful build the Spring Boot starting code -->
 		<dependency>
@@ -65,6 +80,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

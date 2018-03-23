@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "phone_book")
-public class PBEntry {
+public class PhoneBookEntry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "entry_id")
@@ -51,7 +51,7 @@ public class PBEntry {
     @JoinColumn(name = "user_id")
 	private User user;
 	
-	public PBEntry() {
+	public PhoneBookEntry() {
 	}
 
 

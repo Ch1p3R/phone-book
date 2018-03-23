@@ -42,7 +42,7 @@ public class User {
 	private String password;
 	
 	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "user")
-	private List<PBEntry> phoneBook;
+	private List<PhoneBookEntry> phoneBook;
 		
 	public User() {
 	}
@@ -79,11 +79,11 @@ public class User {
 		this.password = password;
 	}
 
-	public List<PBEntry> getPhoneBook() {
+	public List<PhoneBookEntry> getPhoneBook() {
 		return phoneBook;
 	}
 
-	public void setPhoneBook(List<PBEntry> phoneBook) {
+	public void setPhoneBook(List<PhoneBookEntry> phoneBook) {
 		this.phoneBook = phoneBook;
 	}
 	
