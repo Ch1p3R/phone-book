@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "phone_book")
 public class PhoneBookEntry {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "entry_id")
 	private int id;
 	
@@ -44,7 +44,7 @@ public class PhoneBookEntry {
 	@Column(name = "home_number")
 	private String homeNumber;
 	private String address;
-	@Pattern(regexp="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")
+	@Pattern(regexp="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")  //regexp = "^.+@.+\\..+$"
 	private String email;
 	
 	@ManyToOne()

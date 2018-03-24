@@ -28,7 +28,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,15 +53,15 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- For testing through DataJpaTest annotation which support only in-memory
-		waste a lot of time on configuring via embedded database via
-		@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-		which for some reason doesn't work in Spring Boot 2.0 -->
-	 	<dependency>
+		<!-- For testing through DataJpaTest annotation which support only in-memory 
+			waste a lot of time on configuring via embedded database via @AutoConfigureTestDatabase(replace 
+			= AutoConfigureTestDatabase.Replace.NONE) which for some reason doesn't work 
+			in Spring Boot 2.0 -->
+<!-- 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
-		</dependency> 
+		</dependency> -->
 
 		<!-- Added for successful build the Spring Boot starting code -->
 		<dependency>
@@ -70,6 +69,22 @@
 			<artifactId>byte-buddy</artifactId>
 			<version>1.8.0</version>
 		</dependency>
+
+		<!-- Added to avoid IllegalStateException for no supported type and ather exceptions-->
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
+<!-- 		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>9.0.2</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>2.7.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

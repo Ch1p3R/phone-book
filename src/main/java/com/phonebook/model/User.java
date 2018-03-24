@@ -20,15 +20,14 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "user")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private int id;
 	
 	@Column(name = "user_name")
 	@NotEmpty(message = "Please provide your user name")
 	@Length(min = 3, message = "Your user name must have at least 3 characters")
-	@Pattern(regexp="a-zA-Z0-9",				// '\w' includes underscore which is a special character :(
-			message="User names must contain only latin letters and numbers, not special characters")  
+	@Pattern(regexp="^[A-Za-z0-9]+", message="User names must contain only latin letters and numbers, not special characters")  
 	private String userName;
 	
 	@Column(name = "full_name")
