@@ -6,8 +6,8 @@ import com.phonebook.model.PhoneBookEntry;
 
 public interface PhoneBookEntryRepository {
 	
-	PhoneBookEntry createOrUpdate(PhoneBookEntry pbEntry);
-	void delete(Integer id);
-	List<PhoneBookEntry> findAll(Integer userId);
+	PhoneBookEntry createOrUpdate(String userId, PhoneBookEntry pbEntry);
+	void delete(String userId, Integer id);
+	List<PhoneBookEntry> findAll(String userId);
 	
 }

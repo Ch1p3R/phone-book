@@ -2,6 +2,7 @@ package com.phonebook;
 
 import java.util.Arrays;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,13 @@ import com.phonebook.repository.datajpa.DataJpaUserRepository;
 //@EnableJpaRepositories(basePackages = "com.repository")
 public class PhoneBookApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(PhoneBookApplication.class, args);
+	    String[] appArgs = {"--debug"};
+
+	    SpringApplication app = new SpringApplication(PhoneBookApplication.class);
+	    app.setBannerMode(Banner.Mode.OFF);
+	    app.setLogStartupInfo(false);
+	    app.run(appArgs);
+	//	SpringApplication.run(PhoneBookApplication.class, args);
 	}
 	
 	
@@ -31,8 +38,10 @@ public class PhoneBookApplication {
 	        System.out.println(beanName);
 	      }
 	      DataJpaUserRepository repo = (DataJpaUserRepository)ctx.getBean("dataJpaUserRepository");
-	      System.out.println("qweqwe" + repo);
+	      System.out.println("yo");
 	    };
-	  }    
+	  }  
+	
+
 
 }

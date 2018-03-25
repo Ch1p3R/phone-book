@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -23,18 +24,21 @@ import com.phonebook.repository.UserRepository;
 @PropertySource("classpath:application.properties")
 public class UserRepositoryTest {
 
-	//@Qualifier("qwertyq")
+	
 	@Autowired
 	public UserRepository userRepository;
 	
-	@Test 
+	@Test
+	@Rollback(value=false)
 	public void createUser(){
 		User u = new User();
-		u.setFullName("SeHnat Fef DDw");
+		u.setFullName("Sdsfddw");
 		u.setPassword("123111456");
 		u.setUserName("adDasSssa3");
 		System.out.println(userRepository);
-		userRepository.createOrUpdate(u);
+		User user = userRepository.createOrUpdate(u);
+		System.out.println("qqqqq" + user.getId());
+		
 	}
 
 	
