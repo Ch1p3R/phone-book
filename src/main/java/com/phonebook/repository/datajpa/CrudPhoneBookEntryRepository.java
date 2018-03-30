@@ -1,14 +1,25 @@
-/*package com.phonebook.repository.datajpa;
+package com.phonebook.repository.datajpa;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.phonebook.model.PhoneBookEntry;
 
-@Repository
-public interface CrudPhoneBookEntryRepository  extends CrudRepository<PhoneBookEntry, Integer>{
+public interface CrudPhoneBookEntryRepository extends CrudRepository<PhoneBookEntry, Integer> {
+
+	List<PhoneBookEntry> findByAccount_id(String accId);
+
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM PhoneBookEntry pbe WHERE pbe.id=:entryId AND pbe.account.id=:accId")
+	int delete(String accId, Integer entryId);
 	
-	
+	// o_O
+	List<PhoneBookEntry> findByAccount_idAndFirstNameContainsAndLastNameContainsAndMobileNumberContains(
+			String accId, String firstName, String lastName, String mobileNumber);
 	
 }
-*/

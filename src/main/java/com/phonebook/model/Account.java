@@ -16,23 +16,26 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.phonebook.repository.local.databind.PhoneBookEntryDeserializer;
+import com.phonebook.repository.local.databind.PhoneBookEntrySerializer;
+
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "account")
+public class Account {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "user_id")
+	@Column(name = "uuid")
 	private String id;
-	
-	@Column(name = "user_name")
-	@NotEmpty(message = "Please provide your user name")
+
+	@Column(name = "name", unique=true)
 	@Length(min = 3, message = "Your user name must have at least 3 characters")
-	@Pattern(regexp="^[A-Za-z0-9]+", message="User names must contain only latin letters and numbers, not special characters")  
-	private String userName;
+	@Pattern(regexp="^[A-Za-z0-9]+", message="Account name must contain only latin letters and numbers without any special characters")  
+	private String name;
 	
 	@Column(name = "full_name")
-	@NotEmpty(message = "Please provide your full name")
 	@Length(min = 5, message = "Your full name must have at least 5 characters")
 	private String fullName;
 	
@@ -41,10 +44,12 @@ public class User {
 	@Length(min = 5, message = "Your password must have at least 5 characters")
 	private String password;
 	
-	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "user")
+	@JsonDeserialize(using = PhoneBookEntryDeserializer.class)
+	@JsonSerialize(using = PhoneBookEntrySerializer.class)
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "account")
 	private List<PhoneBookEntry> phoneBook;
 		
-	public User() {
+	public Account() {
 	}
 
 	public String getId() {
@@ -55,12 +60,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getFullName() {
@@ -85,6 +90,12 @@ public class User {
 
 	public void setPhoneBook(List<PhoneBookEntry> phoneBook) {
 		this.phoneBook = phoneBook;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + name + ", fullName=" + fullName + ", password=" + password
+				+ ", phoneBook=" + phoneBook + "]";
 	}
 	
 	

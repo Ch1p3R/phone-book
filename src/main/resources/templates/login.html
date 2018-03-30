@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/header :: header">
+</head>
+
+<body style="padding-top: 70px">
+
+	<div th:replace="fragments/header :: navigation"></div>
+
+	<div class="container">
+
+		<div class="row" style="margin-top: 20px">
+			<form class="well form-horizontal" th:action="@{/login}"
+				method="post">
+
+				<fieldset>
+					<legend>
+						<center>
+							<h2>
+								<b>Sign In form</b>
+							</h2>
+						</center>
+					</legend>
+					<br>
+
+
+
+				<div class="form-group ">
+						<label class="control-label col-md-4" ></label>	
+						<div class="col-md-4 inputGroupContainer">
+						<span style="display:inline-block;" th:if="${param.error}" 
+						class="alert alert-danger">Invalid account name or password.
+					</span>
+					<span class="alert alert-info" th:if="${param.logout}">
+						You have been logged out.
+					</span>
+					
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span> <input type="text"
+								name="name" id="name" class="form-control" autofocus="true" placeholder="Account Name">
+						</div>
+						</div>
+					</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4"></label>
+							<div class="col-md-4 inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-user"></i></span> <input
+										class="form-control" type="password" id="password" name="password" placeholder="Password">
+								</div>
+
+							</div>
+						</div>
+
+
+
+					<div class="row col-xs-11" >
+						<div class="col-xs-offset-6">
+							<input type="submit" class="btn btn-lg btn-primary "
+								value="Sign In" />
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6"></div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

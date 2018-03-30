@@ -1,4 +1,4 @@
-package com.phonebook.repository.local.custom.serialization;
+package com.phonebook.repository.local.databind;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,11 +17,11 @@ public class PhoneBookEntrySerializer extends JsonSerializer<List<PhoneBookEntry
             SerializerProvider provider) throws IOException,
             JsonProcessingException {
         jgen.writeStartArray();
-   
+        
         for(int i = 0; i < value.size(); i++){
             jgen.writeStartObject();
             PhoneBookEntry pbe = value.get(i);
-            pbe.setId(i + 1);
+            pbe.setId(i+1);
             jgen.writeObjectField("phoneBook", pbe);
             jgen.writeEndObject();
         }
