@@ -28,8 +28,7 @@ import com.phonebook.repository.AccountRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LocalStorageAppConfig.class)
-//Perhaps it would be better to create own application-test.properties for the tests?
-@TestPropertySource(locations = "classpath:application.properties", properties = {
+@TestPropertySource(properties = {
 		"spring.localstorage.relative-path=/src/test/resources/phone_book_storage/",
 		"spring.localstorage.file-name=TestAccountStorage.file",
 		"spring.profiles.active=file-storage"})

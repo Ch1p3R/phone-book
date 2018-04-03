@@ -1,5 +1,4 @@
 package com.phonebook.repository.local;
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -31,7 +30,7 @@ import com.phonebook.repository.PhoneBookEntryRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LocalStorageAppConfig.class)
-@TestPropertySource(locations = "classpath:application-test.properties", properties = {
+@TestPropertySource(properties = {
 		"spring.localstorage.file-name=TestEntriesStorage.file",
 		"spring.profiles.active=file-storage"})
 public class PhoneBookEntryRepositoryTest {
@@ -123,14 +122,13 @@ public class PhoneBookEntryRepositoryTest {
 	
 	@Test
 	public void updateEntry(){	
-		pbe2.setId(1);
-		pbe2.setFirstName("Катерина");
-		pbe2.setHomeNumber("0441224455");
-		pbeRepository.createOrUpdate(accWithTwoEntries.getId(), pbe2);
+		pbe3.setId(2);
+		pbe3.setFirstName("Катерина");
+		pbe3.setHomeNumber("0441224455");
+		pbeRepository.createOrUpdate(accWithTwoEntries.getId(), pbe3);
 			
 		List<PhoneBookEntry> entries = pbeRepository.findAllByAccountId(accWithTwoEntries.getId());
 		assertThat(entries, hasSize(2));
-		assertThat(entries, hasItem(pbe2));
 		
 	}
 	

@@ -9,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -18,8 +16,10 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.phonebook.repository.local.databind.PhoneBookEntryDeserializer;
-import com.phonebook.repository.local.databind.PhoneBookEntrySerializer;
+import com.phonebook.repository.databind.PhoneBookEntryDeserializer;
+import com.phonebook.repository.databind.PhoneBookEntrySerializer;
+
+
 
 @Entity
 @Table(name = "account")
@@ -27,10 +27,10 @@ public class Account {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "uuid")
+	@Column(name = "acc_id")
 	private String id;
 
-	@Column(name = "name", unique=true)
+	@Column(name = "user_name", unique=true)
 	@Length(min = 3, message = "Your user name must have at least 3 characters")
 	@Pattern(regexp="^[A-Za-z0-9]+", message="Account name must contain only latin letters and numbers without any special characters")  
 	private String name;
@@ -39,14 +39,14 @@ public class Account {
 	@Length(min = 5, message = "Your full name must have at least 5 characters")
 	private String fullName;
 	
-	@Transient
-	@NotEmpty(message = "Please provide your password")
+
 	@Length(min = 5, message = "Your password must have at least 5 characters")
 	private String password;
-	
+
+
 	@JsonDeserialize(using = PhoneBookEntryDeserializer.class)
 	@JsonSerialize(using = PhoneBookEntrySerializer.class)
-	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "account")
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy="acc")
 	private List<PhoneBookEntry> phoneBook;
 		
 	public Account() {

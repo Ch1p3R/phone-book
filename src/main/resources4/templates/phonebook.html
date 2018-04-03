@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="fragments/header :: header">
+</head>
+
+<body>
+
+	<div th:replace="fragments/header :: navigation"></div>
+	<div th:if="${not #lists.isEmpty(entries)}">
+	<h2>Entries List</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Patronymic Name</th>
+				<th>Mobile Number</th>
+				<th>Home Number</th>
+				<th>Address</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="entry : ${entries}">
+			<td th:text="${entry.firstName}"></td>
+			<td th:text="${entry.lastName}"></td>
+			<td th:text="${entry.patronymicName}"></td>
+			<td th:text="${entry.mobileNumber}"></td>
+			<td th:text="${entry.homeNumber}"></td>
+			<td th:text="${entry.address}"></td>
+			<td th:text="${entry.email}"></td>
+			</tr>
+		</tbody>
+		
+	</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	</div>
+
+	<!-- <div th:replace="fragments/footer :: footer"></div> -->
+
+</body>
+</html>

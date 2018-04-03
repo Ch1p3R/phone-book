@@ -30,14 +30,14 @@ public class DataJpaPhoneBookEntryRepository implements PhoneBookEntryRepository
 
 	@Override
 	public List<PhoneBookEntry> findAllByAccountId(String accId) {
-		return entryRepository.findByAccount_id(accId);
+		return entryRepository.findByAcc_id(accId);
 	}
 
 
 	@Override
 	public List<PhoneBookEntry> search(String accId, String firstName, String lastName, String mobileNumber) {
 		return entryRepository
-				.findByAccount_idAndFirstNameContainsAndLastNameContainsAndMobileNumberContains(
+				.findByAcc_idAndFirstNameContainsAndLastNameContainsAndMobileNumberContains(
 						accId, firstName, lastName, mobileNumber);
 	}
 

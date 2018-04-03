@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.phonebook.model.Account;
 
-public class User implements UserDetails{
+public class AccountDetails implements UserDetails{
 	
 	/**
 	 * 
@@ -16,7 +16,7 @@ public class User implements UserDetails{
 	private static final long serialVersionUID = 641529837310846300L;
 	private final Account account;
 
-	public User(Account account) {
+	public AccountDetails(Account account) {
 		super();
 		this.account = account;
 	}

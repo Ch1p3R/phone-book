@@ -1,0 +1,236 @@
+body { 
+  font-size: 140%; 
+}
+
+h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+table caption {
+	padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+
+
+/* a, a:focus, a:hover {
+	color: #fff;
+} */
+
+.btn-default, .btn-default:hover, .btn-default:focus {
+	color: #333;
+
+	background-color: #fff;
+	border: 1px solid #fff;
+}
+
+/*
+ * Base structure
+ */
+html, body {
+	height: 100%;
+	background-color: #333;
+}
+
+body {
+	color: #fff;
+	text-align: center;
+}
+
+.well{
+	margin-top:30px;
+	background-color:#5e5e5e;
+}
+/* .well h2{
+	color:#2abc01;
+} */
+
+.login legend h3{
+	color:#0061a3;
+}
+
+.register legend h3{
+	color:#308e08;
+}
+
+.alert.alert-danger{
+	margin-top:3px;
+}
+@font-face {
+	font-family: Graffittos;
+	src: url(fonts/TheBattleCont.ttf);
+}
+
+.graffiti {
+	font-family: Graffittos;
+	font-size: 6.0em;
+	color: #ba0000;
+}
+.graffiti.masthead-brand{
+	width:100%;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+	display: table;
+	width: 100%;
+	height: 100%; /* For at least Firefox */
+	min-height: 100%;
+	-webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+	box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+}
+
+.site-wrapper-inner {
+	display: table-cell;
+	vertical-align: top;
+}
+
+/* Padding for spacing */
+.inner {
+	padding: 30px;
+	possition:absolute;
+}
+
+/*
+ * Header
+ */
+.masthead.clearfix {
+	top: 0;
+	width: auto;
+	possition: absolute;
+}
+
+
+.masthead-nav>li {
+	display: inline-block;
+}
+
+.masthead-nav>li+li {
+	margin-left: 20px;
+}
+
+.masthead-nav>li>a {
+	padding-right: 0;
+	padding-left: 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff; /* IE8 proofing */
+	color: rgba(255, 255, 255, .75);
+	border-bottom: 2px solid transparent;
+}
+
+.masthead-nav>li>a:hover, .masthead-nav>li>a:focus {
+	background-color: transparent;
+	border-bottom-color: #a9a9a9;
+	border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+/* .masthead-nav>li>a.logout:hover, .masthead-nav>li>a.logout:focus {
+	color: rgba(226, 17, 0, 0.82);
+	background-color: transparent;
+	border-bottom-color: rgba(226, 17, 0, 0.82);
+} */
+
+/* .masthead-nav>li>a.login {
+	color: #73e77c;
+	margin-left: 10px;
+	margin-right: 5px;
+} */
+
+/* .masthead-nav>li>a.register {
+	color: #6de7db;
+	margin-left: 0;
+} */
+
+/* .masthead-nav>li>a.register:hover, .masthead-nav>li>a.register:focus {
+	color: rgba(106, 159, 255, 0.82);
+	background-color: transparent;
+	border-bottom-color: rgba(58, 130, 254, 0.82);
+} */
+
+/* .masthead-nav>.active>a, .masthead-nav>.active>a:hover, .masthead-nav>.active>a:focus
+	{
+	color: #fff;
+	border-bottom-color: #fff;
+} */
+
+/* .masthead-nav>li>a.logout {
+	color: #e79794;
+}
+
+
+
+
+/*
+ * Cover
+
+.cover {
+	padding: 0 20px;
+}
+
+.cover .btn-lg {
+	padding: 10px 20px;
+	font-weight: bold;
+}
+
+* Footer
+
+
+.mastfoot {
+	color: #999;
+	IE8
+	proofing
+	color
+	:
+	rgba(
+	255
+	,
+	255
+	,
+	255
+	,
+	.5
+	);
+} */
+
+/*  * Affix and center
+
+
+@media (min-width: 700px) {
+  Pull out the header and footer
+ 
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  Start the vertical centering
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  Handle the widths
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; Must be percentage or pixels for horizontal alignment
+  }
+}
+
+@media (min-width: 750px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 850px;
+  }
+} */
+*
+/

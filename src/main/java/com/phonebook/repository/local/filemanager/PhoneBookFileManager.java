@@ -143,7 +143,9 @@ public class PhoneBookFileManager extends BaseFileManager<Account> {
 				LOGGER.info("Deleted entry with id: " + pbEntry.getId());
 			} else {
 				// Update entry
-				acc.getPhoneBook().set(pbEntry.getId(), pbEntry);
+				System.out.println(pbEntry.getId());
+				
+				acc.getPhoneBook().set(pbEntry.getId()-1, pbEntry);
 				update(accId, acc);
 				LOGGER.info("Updated entry with id: " + pbEntry.getId());
 			}

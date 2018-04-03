@@ -1,37 +1,30 @@
 package com.phonebook;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication
-//@EnableAutoConfiguration
 public class PhoneBookApplication {
 	public static void main(String[] args) {
+	    String prop = System.getProperty("lardi.conf");
+	    SpringApplicationBuilder builder = new SpringApplicationBuilder(PhoneBookApplication.class);
 
-		SpringApplication.run(PhoneBookApplication.class, args);
+	    if (prop != null && !prop.equals("") && new File(prop).exists()) {
+	        builder.properties("spring.config.location=" + prop);
+	    } 
+	    builder.run(args);
+
 	}
 
-	@Autowired
+		@Autowired
 	   public PhoneBookApplication(Environment environment) {
 	      // set system properties before the beans are being created.
 	      String property = "spring.profiles.active";
 	      System.getProperties().setProperty(property, environment.getProperty(property));
 	   }
-
-/*	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> {
-
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
-
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				System.out.println(beanName);
-			}
-		};
-	}*/
 
 }

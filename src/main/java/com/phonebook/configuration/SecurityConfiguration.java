@@ -36,12 +36,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		  http.csrf().disable().authorizeRequests()
 		  .antMatchers("/webjars/**").permitAll()
-		  .antMatchers("/", "/registration").permitAll()
+		  .antMatchers("/css/**").permitAll()
+		  .antMatchers("/").permitAll()
+		  .antMatchers("/registration").permitAll()
+		  .antMatchers("/authorization").anonymous()
 		  		.anyRequest().authenticated()	
 		  	.and()
 		  		.formLogin().loginPage("/login").permitAll()
-		        .defaultSuccessUrl("/phonebook",true).failureUrl("/login?error=true")
-		  	.and().logout().permitAll().logoutSuccessUrl("/login");
+		        .defaultSuccessUrl("/phonebook",true).failureUrl("/authorization?error=true")
+		  	.and().logout().permitAll().logoutSuccessUrl("/authorization");
+	}
+	
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(accountDetailsService);
 	}
 }
 

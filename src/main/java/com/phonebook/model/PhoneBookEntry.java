@@ -9,39 +9,35 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
-@Table(name = "phone_book")
+@Table(name = "phone_book_entry")
 public class PhoneBookEntry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name = "first_name")
-	@NotEmpty(message = "Please provide your first name")
-	@Length(min = 4, message = "Your first name must have at least 4 characters")
+	@Length(min = 4, message = "Contact first name must have at least 4 characters")
 	private String firstName;
 
 	@Column(name = "last_name")
-	@NotEmpty(message = "Please provide your last name")
-	@Length(min = 4, message = "Your last name must have at least 4 characters")
+	@Length(min = 4, message = "Last name must have at least 4 characters")
 	private String lastName;
 
 	@Column(name = "patronymic_name")
-	@NotEmpty(message = "Please provide your patronymic name")
-	@Length(min = 4, message = "Your patronymic name must have at least 4 characters")
+	@Length(min = 4, message = "Patronymic name must have at least 4 characters")
 	private String patronymicName;
 
 	@Column(name = "mobile_number")
-//	@NotEmpty()
-	@Pattern(regexp = "^((\\+?3)?8)?((0\\(\\d{2}\\)?)|(\\(0\\d{2}\\))|(0\\d{2}))\\d{7}$", 
-	message = "Format of mobile number must be valid for ukraine")
+	@Pattern(regexp = "^((\\+?3)?8)?((0\\(\\d{2}\\)?)|(\\(0\\d{2}\\)-?)|(0\\d{2}))(\\d{7}|\\d{3}-?\\d{2}-?\\d{2})$", 
+	message = "Format of mobile number must be valid for Ukraine")
 	private String mobileNumber;
 
 	@Column(name = "home_number")
@@ -53,8 +49,8 @@ public class PhoneBookEntry {
 
 	@JsonIgnore
 	@ManyToOne()
-	@JoinColumn(name = "phonebook_id")
-	private Account account;
+	@JoinColumn(name = "acc_id")
+	private Account acc;
 
 	public PhoneBookEntry() {
 	}
@@ -124,11 +120,11 @@ public class PhoneBookEntry {
 	}
 
 	public Account getAccount() {
-		return account;
+		return acc;
 	}
 
 	public void setAccount(Account account) {
-		this.account = account;
+		this.acc = account;
 	}
 
 	@Override
@@ -202,7 +198,7 @@ public class PhoneBookEntry {
 	public String toString() {
 		return "PhoneBookEntry [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", patronymicName="
 				+ patronymicName + ", mobileNumber=" + mobileNumber + ", homeNumber=" + homeNumber + ", address="
-				+ address + ", email=" + email + ", user=" + account + "]";
+				+ address + ", email=" + email + ", user=" + acc + "]";
 	}
 
 }

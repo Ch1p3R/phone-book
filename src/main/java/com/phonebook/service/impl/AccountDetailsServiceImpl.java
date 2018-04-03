@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.phonebook.model.Account;
 import com.phonebook.repository.AccountRepository;
-import com.phonebook.web.security.User;
+import com.phonebook.web.security.AccountDetails;
 
 @Service
 public class AccountDetailsServiceImpl implements UserDetailsService{
@@ -28,7 +28,7 @@ public class AccountDetailsServiceImpl implements UserDetailsService{
 			throw new UsernameNotFoundException(accName);
 		}
 		
-		return new User(acc);
+		return new AccountDetails(acc);
 	}
 
 }

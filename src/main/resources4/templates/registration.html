@@ -4,20 +4,23 @@
 <head lang="en" th:replace="fragments/header :: header">
 </head>
 
-<body style="padding-top: 70px">
+<body>
 
 	<div th:replace="fragments/header :: navigation"></div>
+		<div class="site-wrapper" >
+		<div class="site-wrapper-inner">
+			<div class="cover-container">
+	
+	<div class="container register">
 
-	<div style="position: relative;" class="container">
-
-		<form style="position: relative;" class="well form-horizontal" th:object="${account}"
+		<form class="well form-horizontal" th:object="${account}"
 			th:action="@{/registration}" method="POST" modelAttribute="account">
 			<fieldset>
 				<legend>
 					<center>
-						<h2>
+						<h3>
 							<b>Registration Form</b>
-						</h2>
+						</h3>
 					</center>
 				</legend>
 				<br>		
@@ -70,6 +73,9 @@
 				</div>
 			</fieldset>
 		</form>
+	</div>
+	</div>
+	</div>
 	</div>
 
 	<!-- <div th:replace="fragments/footer :: footer"></div> -->

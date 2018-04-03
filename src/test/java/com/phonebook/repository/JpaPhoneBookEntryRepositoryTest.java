@@ -14,8 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.TestPropertySource;
@@ -28,9 +26,9 @@ import com.phonebook.model.PhoneBookEntry;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
+/*@AutoConfigureTestDatabase(replace = Replace.NONE)*/
 @ComponentScan(basePackages = "com.phonebook.repository")
-@TestPropertySource(locations = "classpath:application-test.properties", properties = { "spring.profiles.active=rdb-storage"})
+@TestPropertySource(properties = { "spring.profiles.active=rdb-storage"})
 public class JpaPhoneBookEntryRepositoryTest {
 	@Autowired
 	public PhoneBookEntryRepository entryRepository;

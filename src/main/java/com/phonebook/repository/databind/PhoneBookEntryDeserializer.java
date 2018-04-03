@@ -1,4 +1,4 @@
-package com.phonebook.repository.local.databind;
+package com.phonebook.repository.databind;
 
 import java.io.IOException;
 import java.util.ArrayList;

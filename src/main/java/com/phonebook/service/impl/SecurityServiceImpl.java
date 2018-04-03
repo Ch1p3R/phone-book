@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import com.phonebook.service.SecurityService;
-import com.phonebook.web.security.User;
+import com.phonebook.web.security.AccountDetails;
 @Service
 public class SecurityServiceImpl implements SecurityService{
     @Autowired
@@ -20,9 +20,9 @@ public class SecurityServiceImpl implements SecurityService{
     
 	@Override
 	public String findLoggedInAccountId() {
-        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
+        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails instanceof UserDetails) {
-            return ((User)userDetails).getAccount().getId();
+            return ((AccountDetails)userDetails).getAccount().getId();
         }
 
         return null;
@@ -30,7 +30,7 @@ public class SecurityServiceImpl implements SecurityService{
 
 	@Override
 	public void autologin(String username, String password) {
-        User userDetails = (User) userDetailsService.loadUserByUsername(username);
+        AccountDetails userDetails = (AccountDetails) userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 

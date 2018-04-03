@@ -1,5 +1,6 @@
 package com.phonebook.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,15 @@ public class PhoneBookEntryServiceImpl implements PhoneBookEntryService{
 
 	@Override
 	public List<PhoneBookEntry> findAllByAccountId(String accId) {
-		return pbeRepository.findAllByAccountId(accId);
+		List<PhoneBookEntry> entries = pbeRepository.findAllByAccountId(accId);
+		return entries != null ? entries : new ArrayList<PhoneBookEntry>();
 	}
 
 	@Override
 	public List<PhoneBookEntry> search(String accId, String firstName, String lastName, String mobileNumber) {
+		firstName = (firstName != null) ? firstName : "";
+		lastName = (lastName != null) ? lastName : "";
+		mobileNumber = (mobileNumber != null) ? mobileNumber : "";		
 		return pbeRepository.search(accId, firstName, lastName, mobileNumber);
 	}
 

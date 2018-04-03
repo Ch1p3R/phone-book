@@ -1,0 +1,150 @@
+html, body {
+	height: 100%;
+	background-color: #333;
+}
+
+body {
+	color: #fff;
+	text-align: center;
+}
+
+.well {
+	margin-top: 30px;
+	background-color: #5e5e5e;
+}
+/* .well h2{
+	color:#2abc01;
+} */
+.login legend h3 {
+	color: #0061a3;
+}
+
+.register legend h3 {
+	color: #308e08;
+}
+
+.cover-container {
+	margin-left: 13%;
+	margin-right: 13%;
+}
+
+.container.login {
+	width: 400px;
+}
+
+.container.register {
+	width: 600px;
+}
+
+#table-wrap{
+	margin:15px 30px 40px 30px;
+
+}
+
+#entriesTable {
+    table-layout: fixed;
+    width: 100%;
+	
+
+}
+
+
+th,td {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #BCBCBC;
+    word-wrap: break-word;
+    font-size: 1.8vmin;
+}
+
+.btn-xl {
+	padding: 10px 20px;
+	font-size: 30px;
+	border-radius: 10px;
+	width: 25%;
+	min-width:175px;
+}
+
+.deleteEntry, .editEntry {
+	cursor: pointer;
+}
+
+.alert.alert-danger {
+	margin-top: 3px;
+}
+
+@font-face {
+	font-family: Graffittos;
+	src: url(fonts/TheBattleCont.ttf);
+}
+
+.graffiti {
+	font-family: Graffittos;
+	font-size: 6.0em;
+	color: #ba0000;
+}
+
+.graffiti.masthead-brand {
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.site-wrapper-inner {
+	position: relative;
+	vertical-align: top;
+}
+
+.site-wrapper {
+	width: 100%;
+	min-height: 100%;
+	-webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+	padding-top: 5px;
+	border: 1px solid black;
+	height: auto;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+/* Padding for spacing */
+.inner {
+	padding: 30px 30px 0px 30px; margin-right : 10px;
+	possition: absolute;
+	margin-right: 10px;
+}
+
+.cover-container {
+	margin-top: 5%;
+}
+
+.masthead.clearfix {
+	top: 0;
+	width: auto;
+	possition: absolute;
+}
+
+.masthead-nav>li {
+	display: inline-block;
+}
+
+.masthead-nav>li+li {
+	margin-left: 20px;
+}
+
+.masthead-nav>li>a {
+	padding-right: 0;
+	padding-left: 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: rgba(255, 255, 255, .75);
+	border-bottom: 2px solid transparent;
+}
+
+.masthead-nav>li>a:hover, .masthead-nav>li>a:focus {
+	background-color: transparent;
+	color: #a40000;
+	border-bottom-color: #ef2929;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
