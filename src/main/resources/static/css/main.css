@@ -148,3 +148,7 @@ th,td {
 .form-group {
 	margin-bottom: 15px;
 }
+
+#deleteModal{
+	color:black;
+}

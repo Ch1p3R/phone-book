@@ -1,0 +1,123 @@
+
+<div th:fragment="save" style="display: none" id="saveForm">
+	<form class="well form-horizontal" method="POST" modelAttribute="entry"
+		th:object="${entry}" th:action="@{/phonebook}">
+		<fieldset>
+			<div class="form-group ">
+				<input class="form-control" name="id" type="hidden"
+					th:value="${entry?.id}" id="id"> <label
+					class="control-label col-md-3">First Name</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input id="firstName"
+							name="firstName" class="form-control" type="text"
+							th:value="${entry?.firstName}">
+
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:value="${entry.firstName}" th:if="${#fields.hasErrors('*')}"
+						th:errors="*{firstName}">Error</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Last Name</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input id="lastName"
+							name="lastName" placeholder="" class="form-control" type="text"
+							th:value="${entry?.lastName}">
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-3">Patronymic Name</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> <input id="patronymicName"
+							name="patronymicName" class="form-control" type="text"
+							th:value="${entry?.patronymicName}">
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:if="${#fields.hasErrors('patronymicName')}"
+						th:errors="*{patronymicName}">Error</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Mobile Number</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-earphone"></i></span> <input
+							id="mobileNumber" name="mobileNumber" class="form-control"
+							type="text" th:value="${entry?.mobileNumber}">
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:if="${#fields.hasErrors('mobileNumber')}"
+						th:errors="*{mobileNumber}">Error</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Home Number (Optional)</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-earphone"></i></span> <input id="homeNumber"
+							name="homeNumber" class="form-control" type="text"
+							th:value="${entry?.homeNumber}">
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:if="${#fields.hasErrors('homeNumber')}"
+						th:errors="*{homeNumber}">Error</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Address (Optional)</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-search"></i></span> <input name="address"
+							id="address" class="form-control" type="text"
+							th:value="${entry?.address}">
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error</span>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Email Address
+					(Optional)</label>
+				<div class="col-md-6 inputGroupContainer">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="glyphicon glyphicon-envelope"></i></span> <input name="email"
+							id="email" class="form-control" type="text"
+							th:value="${entry?.email}">
+					</div>
+					<span style="display: inline-block;" class="alert alert-danger"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
+				</div>
+
+			</div>
+
+			<div>
+				<button id="cancel"
+					class="align-items-center btn btn-sm btn-danger ">cancel</button>
+
+				<button type="submit"
+					class="align-items-center btn btn-sm btn-warning ">save</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
